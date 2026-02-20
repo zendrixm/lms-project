@@ -1,0 +1,21 @@
+# Node.js / Vite / frontend
+node_modules/
+.vite/
+dist/
+*.log
+.env
+.env.local
+
+# .NET / backend
+bin/
+obj/
+*.csproj.user
+*.user
+*.suo
+*.cache
+*.vs/
+*.vscode/
+
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
