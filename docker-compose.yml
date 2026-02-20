@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ZendrixLMSProject0318!   # ← Use the same strong password as before
+      POSTGRES_DB: lms_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest   # or :9 for a specific version
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: zienmae@gmail.com    # ← Change to your preferred email (login username)
+      PGADMIN_DEFAULT_PASSWORD: Zendrix0318!   # ← Set a strong password for pgAdmin login
+      PGADMIN_CONFIG_SERVER_MODE: 'False'          # Optional: Simplifies for local dev (no master password)
+    ports:
+      - "5050:80"                                  # Access pgAdmin at http://localhost:5050
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin              # Persists pgAdmin settings/servers
+    depends_on:
+      - postgres                                   # Starts after postgres is ready
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80/misc/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+  pgadmin-data:
