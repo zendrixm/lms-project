@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Optional layers for custom base/components/utilities */
+@layer base {}
+@layer components {}
+@layer utilities {}
