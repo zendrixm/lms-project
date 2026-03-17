@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/api/courses.ts","./src/plugins/vuetify.ts","./src/router/index.ts","./src/stores/courses.ts","./src/types/api.ts","./src/app.vue","./src/components/helloworld.vue","./src/views/coursedetail.vue","./src/views/dashboard.vue"],"errors":true,"version":"5.9.3"}
